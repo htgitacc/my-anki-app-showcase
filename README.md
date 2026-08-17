@@ -2,7 +2,7 @@
 
 > A personal English–Hungarian vocabulary learning app that reimagines how ANKI works — with AI-powered context correction, real dictionary audio, and bilingual meanings built in.
 
-**Live demo:** [https://my-anki-app.vercel.app](https://my-anki-app.vercel.app) _(replace with your Vercel URL)_
+**Live demo:** [https://my-anki-app.vercel.app](https://my-anki-app-pi.vercel.app/) _(replace with your Vercel URL)_
 
 ---
 
