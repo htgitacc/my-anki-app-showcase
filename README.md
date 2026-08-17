@@ -1,8 +1,6 @@
-# My ANKI App
+# My-Anki App
 
 > A personal English–Hungarian vocabulary learning app that reimagines how ANKI works — with AI-powered context correction, real dictionary audio, and bilingual meanings built in.
-
-**Live demo:** [https://my-anki-app.vercel.app](https://my-anki-app-pi.vercel.app/) _(replace with your Vercel URL)_
 
 ---
 
@@ -19,6 +17,12 @@ Traditional ANKI is powerful but has a friction problem: you manually create eve
 **Real-world example:** The word *harness* in a dictionary means "a set of straps for a horse." But in the sentence *"The team harnessed the power of data to drive growth,"* it means *kihasználni, magára ölteni* (to utilize, to leverage). The AI recognizes this contextual shift and generates the correct meaning — something a static dictionary card can never do.
 
 ---
+
+![Login](screenshots/myanki_01.jpg)
+
+![Main_screen](screenshots/myanki_02.jpg)
+
+![AI_corrected](screenshots/myanki_03.jpg)
 
 ## 🤖 How it was built
 
@@ -86,91 +90,12 @@ The entire project was developed conversationally: the human described what they
 
 ---
 
-## 📊 Database design
-
-8 tables, all with Row-Level Security (RLS) enabled:
-
-```
-profiles (auto-created on signup via trigger)
-    └── words
-        ├── examples (AI-generated or manual)
-        ├── word_tags ← tags
-        ├── word_collections ← collections
-        └── study_progress
-```
-
-Every query is automatically scoped to the authenticated user via RLS policies (`auth.uid() = user_id`). No user can ever see another user's data.
-
----
-
-## 📁 Project structure
-
-```
-my-anki-app/
-├── src/
-│   ├── lib/                    # Shared utilities + components
-│   │   ├── supabase.ts         # Browser + server client factories
-│   │   ├── tts.ts              # Audio playback (dictionary + TTS)
-│   │   ├── types.ts            # TypeScript interfaces
-│   │   ├── csv.ts              # CSV parser + ANKI format helpers
-│   │   ├── auth-context.svelte.ts   # Svelte 5 auth context
-│   │   ├── toast-context.svelte.ts  # Toast notification system
-│   │   ├── theme-context.svelte.ts  # Dark mode context
-│   │   └── components/
-│   │       ├── WordCard.svelte      # 3D flip card
-│   │       ├── WordCardSkeleton.svelte
-│   │       ├── TagPill.svelte
-│   │       ├── ThemeToggle.svelte
-│   │       ├── Toaster.svelte
-│   │       └── Skeleton.svelte
-│   ├── routes/
-│   │   ├── auth/               # Login / register / signout
-│   │   ├── dashboard/
-│   │   │   ├── words/          # List + new word + word detail
-│   │   │   ├── tags/           # Tag management
-│   │   │   ├── collections/    # Collection management
-│   │   │   ├── import/         # CSV import + export
-│   │   │   └── stats/          # Analytics + heatmap
-│   │   └── study/              # Full-screen study mode
-│   ├── app.css                 # Tailwind v4 + dark mode
-│   └── hooks.server.ts         # Auth + route guards
-├── supabase/
-│   ├── functions/
-│   │   ├── generate-examples/  # Gemini: 3 EN/HU sentences
-│   │   └── context-correction/ # Gemini: context-aware meaning
-│   └── migrations/             # SQL schema + RLS
-└── scripts/                   # Verification + test scripts
-```
-
----
-
-## 🚀 Getting started
-
-### Prerequisites
-- Node.js 18+
-- A Supabase project (free tier)
-- A Gemini API key
-
-### Setup
-```bash
-git clone https://github.com/htlearningacc/my-anki-app.git
-cd my-anki-app/my-anki-app
-npm install
-cp .env.example .env  # Fill in Supabase URL + anon key
-npm run dev
-```
-
-Full setup instructions (database migration, Edge Function deploy, Gemini API key) are in the [main repo's README](https://github.com/htlearningacc/my-anki-app).
-
----
-
 ## 📝 Development notes
 
 - **Status:** In active development — features are being refined
 - **Built with:** Vibe coding (human + AI collaboration)
-- **Source code:** [github.com/htlearningacc/my-anki-app](https://github.com/htlearningacc/my-anki-app)
 - **License:** Personal use
 
 ---
 
-> This is a showcase repository. The full source code, commit history, and development documentation are in the [main repository](https://github.com/htlearningacc/my-anki-app).
+> This is a showcase repository. The complete source code, commit history, and development documentation are in a private repository: [htlearningacc](https://github.com/htlearningacc/).
